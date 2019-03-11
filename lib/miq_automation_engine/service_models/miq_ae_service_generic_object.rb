@@ -16,6 +16,10 @@ module MiqAeMethodService
       ar_method { wrap_results(@object.remove_from_service(Service.find_by(:id => service.id))) }
     end
 
+    def remote_console_url=(url)
+      object_send(:remote_console_url=, url, DRb.front.workspace.ae_user.id)
+    end
+
     private
 
     def ae_user_identity

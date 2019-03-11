@@ -17,6 +17,10 @@ module MiqAeMethodService
       ar_method { @object.role.nil? ? nil : @object.role.name }
     end
 
+    def remote_console_url=(url)
+      object_send(:remote_console_url=, url, DRb.front.workspace.ae_user.id)
+    end
+
     def get_ldap_attribute_names
       ar_method do
         ldap_user = find_ldap_user

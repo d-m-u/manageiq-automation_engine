@@ -38,6 +38,10 @@ module MiqAeMethodService
       ar_method { MiqAeServiceModelBase.wrap_results(Service.create!(attributes)) }
     end
 
+    def remote_console_url=(url)
+      object_send(:remote_console_url=, url, DRb.front.workspace.ae_user.id)
+    end
+
     def dialog_options
       @object.options[:dialog] || {}
     end

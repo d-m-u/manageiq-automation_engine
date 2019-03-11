@@ -12,4 +12,8 @@ module MiqAeMethodService
     expose :update_cloud_tenant
     expose :delete_cloud_tenant
   end
+
+  def remote_console_url=(url)
+    object_send(:remote_console_url=, url, DRb.front.workspace.ae_user.id)
+  end
 end
